@@ -50,6 +50,7 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: var(--clr-light-grayish-cyan);
+  font-size: 1rem;
 }
 
 header {
@@ -171,7 +172,7 @@ button:active, #reset-button:active {
 /* activates when number of people is 0 */
 .warning{
   color: var(--clr-warning);
-  margin-left: 2rem;
+  margin-left: 1rem;
   font-size: 0.8rem;
 }
 
@@ -219,9 +220,13 @@ button:active, #reset-button:active {
   }
 
 @media screen and (min-width: 800px) {
+  body{
+    font-size: 0.8rem;
+  }
+
   .calculator-container {
-    max-width: 768px;
-    width: 80vw;
+    max-width: 850px;
+    width: 85vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -231,15 +236,16 @@ button:active, #reset-button:active {
   }
 
   .calculator-data {
-    width: 50%;
+    width: 400px;
+    height: 400px;
     margin: 1rem;
-    padding: 1rem;
   }
 
   .calculator-result {
-    width: 50%;
-    margin: 0.5rem;
-    padding: 2rem;
+    width: 400px;
+    height: 400px;
+    margin: 1rem;
+    padding-top: 5rem;
   }
 
   #reset-button {
