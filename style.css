@@ -220,6 +220,7 @@ button.clicked {
 @media screen and (min-width: 800px) {
   body{
     font-size: 0.8rem;
+    padding-top: 8rem;
   }
 
   .calculator-container {
