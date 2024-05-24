@@ -26,33 +26,35 @@
     </header>
     <main class="calculator-container">
       <div class="calculator-data">
-        <div class="bill">
+        <form class="bill">
           <label for="bill-total">Bill</label>
           <input
-            type="text"
+            type="number"
             name="bill-total"
             id="bill-total"
+            class="bill-total-icon"
             placeholder="0"/>
-        </div>
-        <div class="select-tip">
-          <div class="select-tip__header">Select Tip %</div>
+        </form>
+        <form class="select-tip">
+          <label class="select-tip__header">Select Tip %</label>
           <div class="select-tip__buttons">
-            <button type="button">5%</button>
-            <button type="button">10%</button>
-            <button type="button">15%</button>
-            <button type="button">25%</button>
-            <button type="button">50%</button>
-            <input placeholder="Custom" id="custom-input"/>
+            <button type="button" id="btn-5" value="5">5%</button>
+            <button type="button" id="btn-10" value="10">10%</button>
+            <button type="button" id="btn-15" value="15">15%</button>
+            <button type="button" id="btn-25" value="25">25%</button>
+            <button type="button" id="btn-50" value="50">50%</button>
+            <input placeholder="Custom" id="custom-input" type="number"/>
           </div>
-        </div>
-        <div class="number-of-people">
-           <label for="people">Number of People</label>
+        </form>
+        <form class="number-of-people">
+           <label for="people">Number of People <span id="warning" class="warning" hidden>Can't be zero</span></label>
           <input
-            type="text"
+            type="number"
             name="people"
             id="people"
+            class="people-icon"
             placeholder="0" />
-        </div>
+        </form>
       </div>
       <div class="calculator-result">
           <div class="calculator-result__line">
@@ -65,11 +67,11 @@
             <div>
             <p> Total <span class="tiny-text">/ person</span></p>
           </div>
-          <div class="result" id="total-tip"><span>$</span>0.00</div>
+          <div class="result" id="total-per-person"><span>$</span>0.00</div>
           </div>
-          <button type="button" id="reset-button">Reset</button>
+          <button type="button" id="reset-button" disabled>Reset</button>
       </div>
     </main>
-
+ <script src="script.js"></script> 
   </body>
 </html>

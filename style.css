@@ -8,6 +8,7 @@
   --clr-light-grayish-cyan: hsl(185, 41%, 84%);
   --clr-very-light-grayish-cyan: hsl(189, 41%, 97%);
   --clr-white: hsl(0, 0%, 100%);
+  --clr-warning: rgba(255, 0, 0, 0.722);
 
   --fs-form-inputs: 24px;
 
@@ -19,6 +20,20 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* remove arrow from input with type number */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 html {
@@ -76,10 +91,31 @@ label {
   font-size: var(--fs-form-inputs);
   text-align: right;
   padding-right: 1rem;
+  outline: none;
 }
 
 input::placeholder{
     color: var(--clr-grayish-cyan);
+}
+
+.calculator-container  input:focus{
+  border: 2px solid var(--clr-strong-cyan);
+}
+
+
+.bill, .number-of-people{
+    display: flex;
+    flex-direction: column;
+}
+
+.bill-total-icon{
+     background: url('./images/icon-dollar.svg') no-repeat left center;
+     background-size: 15px;        
+}
+
+.people-icon{
+    background: url('./images/icon-person.svg') no-repeat left center;
+    background-size: 15px; 
 }
 
 .select-tip,
@@ -127,6 +163,18 @@ button:active, #reset-button:active {
     font-size: 1.2rem;
 }
 
+/* activates when warning is displayed */
+.warning-input{
+ background-color: var(--clr-warning);
+}
+
+/* activates when number of people is 0 */
+.warning{
+  color: var(--clr-warning);
+  margin-left: 2rem;
+  font-size: 0.8rem;
+}
+
 .calculator-result {
   margin-top: 2rem;
   background-color: var(--clr-very-dark-cyan);
@@ -149,7 +197,9 @@ button:active, #reset-button:active {
 }
 
 .result {
-  font-size: var(--fs-form-inputs);
+  font-size: 2rem;
+  color: var(--clr-strong-cyan);
+  font-weight: var(--fw-700);
 }
 
 #reset-button {
@@ -163,6 +213,10 @@ button:active, #reset-button:active {
   font-weight: var(--fw-700);
   text-transform: uppercase;
 }
+
+  #reset-button:disabled{
+    background-color: var(--clr-dark-grayish-cyan);
+  }
 
 @media screen and (min-width: 800px) {
   .calculator-container {
