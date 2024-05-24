@@ -16,16 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let billAmount = 0;
   let tipPercentage = 0;
   let numberOfPeople = 1;
+  let previousButton = null;
 
   const calculateTip = () => {
     if (numberOfPeople === 0) {
       warningElement.hidden = false;
-      numberOfPeopleInput.classList.add('warning-input');
+      numberOfPeopleInput.classList.add('warning-input'); //TO FIX: the class is added but the border is not applied
       return;
     }
 
     warningElement.hidden = true;
     numberOfPeopleInput.classList.remove('warning-input');
+
     const tipAmount = (billAmount * tipPercentage) / 100;
     const tipAmountPerPerson = tipAmount / numberOfPeople;
     const totalBill = billAmount + tipAmount;
@@ -48,9 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
   tipOptionsButtons.forEach((button) =>
     button.addEventListener('click', (e) => {
       tipPercentage = parseFloat(e.target.value);
+
       resetButton.disabled = false;
       customTipInput.value = ''; // Clear custom input when a button is clicked
       calculateTip();
+
+      if (previousButton) {
+        previousButton.classList.remove('clicked');
+      }
+
+      button.classList.add('clicked');
+      previousButton = button;
     })
   );
 
@@ -58,6 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
     tipPercentage = parseFloat(e.target.value);
     resetButton.disabled = false;
     calculateTip();
+    if (previousButton) {
+      previousButton.classList.remove('clicked');
+    }
+
+    previousButton = null;
   });
 
   numberOfPeopleInput.addEventListener('input', (e) => {
@@ -77,7 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
     tipAmountPerPersonDisplay.innerHTML = '<span>$</span>0.00';
     totalPerPersonDisplay.innerHTML = '<span>$</span>0.00';
     resetButton.disabled = true;
+
+    if (previousButton) {
+      previousButton.classList.remove('clicked');
+    }
+
+    previousButton = null;
   });
 });
-
-
