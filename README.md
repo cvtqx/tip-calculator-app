@@ -43,7 +43,7 @@ Mobile
 ### Links
 
 - Solution URL: [Github](https://github.com/cvtqx/tip-calculator-app)
-- Live Site URL: [Github Pages](https://your-live-site-url.com)
+- Live Site URL: [Github Pages](https://cvtqx.github.io/tip-calculator-app/)
 
 ## My process
 
