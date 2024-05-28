@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   billTotalInput.addEventListener('input', (e) => {
     billAmount = parseFloat(e.target.value);
+    if (!billAmount) {
+      billAmount = 0;
+    }
     resetButton.disabled = false;
     calculateTip();
   });
@@ -66,6 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   customTipInput.addEventListener('input', (e) => {
     tipPercentage = parseFloat(e.target.value);
+    if (!tipPercentage) {
+      tipPercentage = 0;
+    }
     resetButton.disabled = false;
     calculateTip();
     if (previousButton) {
@@ -77,6 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   numberOfPeopleInput.addEventListener('input', (e) => {
     numberOfPeople = parseFloat(e.target.value);
+    if (!numberOfPeople) {
+      numberOfPeople = 1;
+    }
     resetButton.disabled = false;
     calculateTip();
   });
