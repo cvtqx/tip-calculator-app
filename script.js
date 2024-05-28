@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let previousButton = null;
 
   const calculateTip = () => {
-
     warningElement.hidden = true;
     numberOfPeopleInput.classList.remove('warning-input');
 
@@ -37,10 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   billTotalInput.addEventListener('input', (e) => {
+    if (e.target.value < 0) {
+      alert('Please enter a non-negative number!');
+      e.target.value = '';
+    }
     billAmount = parseFloat(e.target.value);
+
     if (!billAmount) {
       billAmount = 0;
     }
+
     resetButton.disabled = false;
     calculateTip();
   });
@@ -63,10 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   customTipInput.addEventListener('input', (e) => {
+    if (e.target.value < 0) {
+      alert('Please enter a non-negative number!');
+      e.target.value = '';
+    }
     tipPercentage = parseFloat(e.target.value);
     if (!tipPercentage) {
       tipPercentage = 0;
     }
+
     resetButton.disabled = false;
     calculateTip();
     if (previousButton) {
@@ -77,13 +87,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   numberOfPeopleInput.addEventListener('input', (e) => {
+    if (e.target.value < 0) {
+      alert('Please enter a non-negative number!');
+      e.target.value = '';
+    }
     numberOfPeople = parseFloat(e.target.value);
-    console.log(numberOfPeople)
-      if (numberOfPeople === 0) {
-        warningElement.hidden = false;
-        numberOfPeopleInput.classList.add('warning-input'); //TO FIX: the class is added but the border is not applied
-        return;
-      }
+
+    if (numberOfPeople === 0) {
+      warningElement.hidden = false;
+      numberOfPeopleInput.classList.add('warning-input'); //TO FIX: the class is added but the border is not applied
+      return;
+    }
     if (!numberOfPeople) {
       numberOfPeople = 1;
     }
