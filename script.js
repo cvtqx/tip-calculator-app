@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalPerPersonDisplay = document.getElementById('total-per-person');
   const resetButton = document.getElementById('reset-button');
 
-  const warningElement = document.getElementById('warning');
+  const warningElement = document.getElementById('warning-element');
 
   let billAmount = 0;
   let tipPercentage = 0;
@@ -19,11 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let previousButton = null;
 
   const calculateTip = () => {
-    if (numberOfPeople === 0) {
-      warningElement.hidden = false;
-      numberOfPeopleInput.classList.add('warning-input'); //TO FIX: the class is added but the border is not applied
-      return;
-    }
 
     warningElement.hidden = true;
     numberOfPeopleInput.classList.remove('warning-input');
@@ -83,6 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   numberOfPeopleInput.addEventListener('input', (e) => {
     numberOfPeople = parseFloat(e.target.value);
+    console.log(numberOfPeople)
+      if (numberOfPeople === 0) {
+        warningElement.hidden = false;
+        numberOfPeopleInput.classList.add('warning-input'); //TO FIX: the class is added but the border is not applied
+        return;
+      }
     if (!numberOfPeople) {
       numberOfPeople = 1;
     }
@@ -95,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tipPercentage = 0;
     numberOfPeople = 1;
     warningElement.hidden = true;
+    numberOfPeopleInput.classList.remove('warning-input');
     billTotalInput.value = '';
     customTipInput.value = '';
     numberOfPeopleInput.value = '';

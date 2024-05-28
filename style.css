@@ -161,8 +161,8 @@ button.clicked {
 }
 
 /* activates when warning is displayed */
-.warning-input{
- background-color: var(--clr-warning);
+.calculator-container input.warning-input{
+ border: 1px solid var(--clr-warning);
 }
 
 /* activates when number of people is 0 */
